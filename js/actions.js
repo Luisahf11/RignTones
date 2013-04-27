@@ -49,9 +49,11 @@ $(document).ready(function(e) {
     var audio = document.getElementById('Reproductor');
 	$('#descargar a').tap(function(){
 		if($(this).text()== 'Descargar'){//Accion de descargar
+		var ruta="";
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-			var ruta = fileSystem.root.fullPath; 
+			 ruta = fileSystem.root.fullPath; 
 		}, null);
+		alert(ruta);
 		var fileTransfer = new FileTransfer();
 			filTransfer.download(src,ruta+'/ringtoneApp/'+nom+'.mp3',function(entry){
 				//Verificar que no existia el nombre de la carpeta
