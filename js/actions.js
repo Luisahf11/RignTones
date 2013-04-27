@@ -50,10 +50,10 @@ $(document).ready(function(e) {
 	$('#descargar a').tap(function(){
 		if($(this).text()== 'Descargar'){//Accion de descargar
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-			alert(fileSystem.name+''+fileSystem.root.name); 
+			var ruta = fileSystem.root.fullPath; 
 		}, null);
 		var fileTransfer = new FileTransfer();
-			filTransfer.download(src,'file:///mnt/sdcard/ringtoneApp/'+nom+'.mp3',function(entry){
+			filTransfer.download(src,ruta+'/ringtoneApp/'+nom+'.mp3',function(entry){
 				//Verificar que no existia el nombre de la carpeta
 				navigator.notification.alert("Archivo Descargado", null, "Completado", "OK");
 			},function(error) {
