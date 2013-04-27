@@ -51,16 +51,15 @@ $(document).ready(function(e) {
 		if($(this).text()== 'Descargar'){//Accion de descargar
 		var ruta="";
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-			 ruta = fileSystem.root.fullPath; 
-		}, null);
-		alert(ruta);
-		var fileTransfer = new FileTransfer();
+			 ruta = fileSystem.root.fullPath;
+			 var fileTransfer = new FileTransfer();
 			filTransfer.download(src,ruta+'/ringtoneApp/'+nom+'.mp3',function(entry){
 				//Verificar que no existia el nombre de la carpeta
 				navigator.notification.alert("Archivo Descargado", null, "Completado", "OK");
 			},function(error) {
 				navigator.notification.alert("Código de error" + error.code, null, "Error", "Aceptar");
-			});		
+			}); 
+		}, null);		
 		}else{//Reproducir Audio
 		audio.src = src;
 		audio.play();
